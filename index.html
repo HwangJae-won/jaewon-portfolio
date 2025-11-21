@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI/Data Scientist Portfolio - 황재원</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Slate-50 */
+        }
+        .text-gradient {
+            /* 트렌디한 깊은 파랑 -> 보라 그라데이션 */
+            background-image: linear-gradient(to right, #1d4ed8, #7c3aed); /* Blue-700 to Violet-600 */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Apple-like subtle shadow and hover effect */
+        .card-hover {
+            /* Subtle lift */
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Slower, smoother transition */
+        }
+        .card-hover:hover {
+            transform: translateY(-5px); /* Bolder lift */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Stronger shadow */
+            border-color: #6366f1; /* Indigo-500 border highlight on hover */
+        }
+        /* Hide scrollbar for body when modal is open */
+        .no-scroll {
+            overflow: hidden;
+        }
+        /* Modal transition class for content */
+        .modal-content-transition {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Custom timeline style for Experience */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e5e7eb; /* gray-200 */
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem; /* py-4 equivalent */
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            background: #4f46e5; /* indigo-600 */
+            border-radius: 50%;
+            border: 4px solid #f8fafc; /* bg-body-color */
+            z-index: 10;
+        }
+
+        /* New: Section Title Style - modern accent */
+        .section-title-accent::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #6366f1; /* Indigo-500 */
+            margin: 10px auto 0;
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-xl backdrop-blur-md bg-opacity-90 border-b border-gray-100"> 
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-extrabold text-gradient">
+                Jaewon Hwang
+            </a>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#about" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300">소개</a>
+                <a href="#projects" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300">프로젝트</a>
+                <a href="#experience" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300">경력</a>
+                <a href="#academic" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300">학력</a>
+                <a href="#awards" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300">수상/자격</a>
+                <a href="#activities" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300">활동</a>
+                <a href="https://example.com/resume.pdf" target="_blank" class="px-4 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition duration-300 font-bold shadow-md hover:shadow-lg">이력서 다운로드</a>
+            </nav>
+            <!-- Mobile Menu Toggle (Simplified for single-file implementation) -->
+            <button class="md:hidden text-gray-600 hover:text-indigo-600 p-2 rounded-lg" onclick="alert('모바일 메뉴는 구현되지 않았습니다.')">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- 1. Hero / About Section -->
+        <section id="about" class="pt-24 pb-20 text-center border-b border-gray-100"> 
+            <h1 class="text-7xl font-extrabold mb-4 leading-snug text-gray-900"> <!-- Larger font -->
+                <span class="text-gradient">AI Developer</span> & <span class="text-gradient">Data Scientist</span>
+            </h1>
+            <h2 id="profile-name" class="text-3xl font-semibold text-gray-700 mb-6"></h2> <!-- Bolder secondary title -->
+            <p id="profile-bio" class="text-xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed"></p> <!-- More relaxed leading -->
+            
+            <div id="contact-links" class="flex justify-center space-x-8 text-xl">
+                <!-- Links will be injected here -->
+            </div>
+        </section>
+
+        <!-- 2. Projects Section -->
+        <section id="projects" class="py-20 border-t border-gray-100"> 
+            <h2 class="text-5xl font-extrabold text-center text-gray-900 mb-4 section-title-accent">핵심 포트폴리오 프로젝트</h2> <!-- New section title style -->
+            <p id="project-subtitle" class="text-center text-xl text-gray-600 mb-12">
+                엄선된 핵심 프로젝트를 보여드립니다.
+            </p>
+            
+            <!-- Project Filter Buttons -->
+            <div class="flex flex-wrap justify-center space-x-3 mb-12"> <!-- Adjusted spacing for better flow -->
+                <button id="filter-all" class="filter-btn px-6 py-2 rounded-full font-bold transition duration-300 bg-indigo-600 text-white hover:bg-indigo-700 active-filter shadow-md hover:shadow-lg" data-filter="All">
+                    전체 분야
+                </button>
+                <button id="filter-ai-dev" class="filter-btn px-6 py-2 rounded-full font-bold transition duration-300 bg-gray-200 text-gray-700 hover:bg-indigo-100 hover:text-indigo-700" data-filter="AI Development">
+                    AI 개발
+                </button>
+                <button id="filter-data-sci" class="filter-btn px-6 py-2 rounded-full font-bold transition duration-300 bg-gray-200 text-gray-700 hover:bg-sky-100 hover:text-sky-700" data-filter="Data Science">
+                    데이터 사이언스
+                </button>
+            </div>
+
+            <!-- Project Cards Grid -->
+            <div id="projects-container" class="grid md:grid-cols-2 lg:grid-cols-2 gap-10"> <!-- Increased gap -->
+                <!-- Project cards will be injected here -->
+            </div>
+            <div id="no-projects" class="hidden text-center text-xl text-gray-500 mt-16">
+                선택된 필터에 해당하는 프로젝트가 없습니다.
+            </div>
+
+            <!-- Project Toggle Button -->
+            <div id="project-toggle" class="text-center mt-16">
+                <button id="toggle-view-btn" onclick="toggleProjectView()" class="px-8 py-3 rounded-full font-bold transition duration-300 bg-gray-800 text-white hover:bg-gray-700 shadow-xl hover:shadow-2xl"> <!-- Bolder button -->
+                    전체 프로젝트 보기 (8개)
+                </button>
+            </div>
+
+        </section>
+
+        <!-- 3. Experience Section (경력 기술서) -->
+        <section id="experience" class="py-20 border-t border-gray-100">
+            <h2 class="text-5xl font-extrabold text-center text-gray-900 mb-4 section-title-accent">경력 기술 (Professional Experience)</h2>
+            <p class="text-center text-xl text-gray-600 mb-12">주요 직무 역할 및 비즈니스 성과를 중심으로 기술합니다.</p>
+            <div id="experience-container" class="max-w-3xl mx-auto timeline">
+                <!-- Experience timeline items will be injected here -->
+            </div>
+        </section>
+
+        <!-- 4. Academic Section (학력 및 논문 연구) -->
+        <section id="academic" class="py-20 border-t border-gray-100">
+            <h2 class="text-5xl font-extrabold text-center text-gray-900 mb-4 section-title-accent">학력 및 논문 연구</h2>
+            <p class="text-center text-xl text-gray-600 mb-12">GNN/LLM 연구를 포함한 학위 과정의 깊이를 보여줍니다.</p>
+            <div id="academic-container" class="max-w-3xl mx-auto space-y-8">
+                <!-- Academic items will be injected here -->
+            </div>
+        </section>
+
+        <!-- 5. Awards/Certificates Section (수상 및 자격증) -->
+        <section id="awards" class="py-20 border-t border-gray-100">
+            <h2 class="text-5xl font-extrabold text-center text-gray-900 mb-4 section-title-accent">수상 및 자격증</h2>
+            <p class="text-center text-xl text-gray-600 mb-12">데이터 분석 역량을 증명하는 경진대회 성과와 전문 자격입니다.</p>
+            <div id="awards-container" class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+                <!-- Award/Certificate items will be injected here -->
+            </div>
+        </section>
+
+        <!-- 6. Activities Section (대외 활동 및 이수) -->
+        <section id="activities" class="py-20 border-t border-gray-100">
+            <h2 class="text-5xl font-extrabold text-center text-gray-900 mb-4 section-title-accent">대외 활동 및 이수</h2>
+            <p class="text-center text-xl text-gray-600 mb-12">지속적인 학습 태도와 커뮤니케이션 능력을 보여줍니다.</p>
+            <div id="activities-container" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+                <!-- Activity items will be injected here -->
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Project Detail Modal (Hidden by default) -->
+    <div id="project-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-gray-900/70 backdrop-blur-md transition-opacity duration-300 opacity-0" aria-modal="true" role="dialog">
+        <!-- Modal Content Container -->
+        <div class="modal-content-transition relative w-full max-w-4xl max-h-[90vh] bg-white rounded-3xl shadow-2xl p-6 md:p-12 overflow-y-auto transform scale-95 opacity-0">
+            <!-- Modal Close Button -->
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-400 hover:text-gray-700 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition duration-200 focus:outline-none" aria-label="Close modal">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            
+            <!-- Modal Dynamic Content -->
+            <div id="modal-body-content" class="space-y-10 pt-4"> <!-- Increased spacing -->
+                <!-- Content will be dynamically inserted here by JS -->
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white mt-20"> <!-- Darker footer for contrast -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center">
+            <p>&copy; 2024 Jaewon Hwang Portfolio. All rights reserved.</p>
+            <p class="text-sm text-gray-400 mt-2">Designed with minimal CSS and modern web standards.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- GLOBAL STATE ---
+        let isViewingAll = false; // 현재 프로젝트 보기 모드: false=Featured, true=All
+
+        // --- DATA STRUCTURE (황재원 님 정보 업데이트 및 색상 조정) ---
+        const profile = {
+            name: "황재원 (Jaewon Hwang)",
+            title: "AI Developer & Data Scientist",
+            // 학업 과정 특기사항과 연구 분야를 통합하여 간결하게 작성
+            bio: "GNN, LLM 기반의 AI 솔루션 개발 및 통계적 문제 해결 역량을 보유하고 있습니다. 도메인 데이터 구조화, 노이즈 처리, 모델 최적화에 강점을 가진 전문가입니다.",
+            email: "jaewon.hwang@example.com", // Placeholder updated
+            github: "https://github.com/HwangJae-won", 
+            linkedin: "https://linkedin.com/in/jaewon-hwang-profile", // Placeholder updated
+            resumeUrl: "https://example.com/resume.pdf", 
+        };
+
+        // --- 경력 기술서 데이터 (불필요한 Mock 데이터 제거) ---
+        const career = [
+            {
+                id: 1,
+                company: "아주대학교 의료원 (경기도 외상체계지원단)",
+                period: "2024.09 - 재직중",
+                title: "주임연구원 (응급/외상 데이터 분석)",
+                summary: "R, Excel 기반 응급·외상 환자 데이터 분석을 통해 지역별 이송 체계 및 처치 효율성을 분석하고, 의료 자원 배분 정책 연구를 지원.",
+                achievements: [
+                    "R과 Excel을 활용하여 환자 및 이송 데이터를 정제·통합·시각화하여 분석 신뢰도 향상.",
+                    "이송 소요시간, 처치 유형, 병원 수용률 등 핵심 지표 정의 및 계산 로직 구축.",
+                    "분석 결과를 반영한 협력병원 지정 기준 및 의료자원 배분 정책 보고서 작성 지원.",
+                    "현업과의 협업을 통해 데이터 기반 의사결정 프로세스의 중요성 인식 및 개선 방향 제시."
+                ],
+                techStack: ["R", "Excel", "통계 분석", "데이터 정제"]
+            },
+            {
+                id: 2,
+                company: "GlobeAI (솔루션연구개발팀)",
+                period: "2024.05 - 2024.09",
+                title: "사원 (AI/ML PoC 리드)",
+                summary: "RAG 기반 생성형 AI PoC 리드 및 CCTV 실시간 탐지 모델 고도화.",
+                achievements: [
+                    "RAG 구조 설계 및 Llama2-32B 기반 PoC 수행, 프롬프트 최적화로 **QA 정확도 20%p 향상** 및 환각률 감소.",
+                    "YOLOv5 기반 선박 사고 탐지 모델 개선 (zoom-out 증강 및 멀티태스킹 구조 도입)으로 **탐지율 30% 향상**.",
+                    "AWS 아키텍처(Lambda·S3·EC2) 설계 및 RAG 파이프라인 자동화 구현.",
+                    "모델 경량화 기술 역량 확보 및 실환경(FPS 2배 개선) 검증 완료."
+                ],
+                techStack: ["LLM", "RAG", "YOLOv5", "AWS", "Python", "MLOps"]
+            },
+            // 가상의 경력 (id: 3)은 사용자 요청에 따라 삭제됨
+        ];
+        
+        // --- 학력 및 활동 데이터 (기존 데이터 유지) ---
+        const education = [
+            // Academic
+            { group: "ACADEMIC", type: "학력 (석사)", title: "중앙대학교 대학원 (통계학과)", detail: "GNN, LLM 연구 (AI STAT LAB) / 학점 3.75/4.5 (92.50%)", period: "2022.03 - 2024.02", categoryColor: "bg-indigo-600" },
+            { group: "ACADEMIC", type: "논문 (석사 학위)", title: "다중 레이블 독성 예측 연구", detail: "GROVER+MLSMOTE+CatBoost 조합에서 Recall 2.5배 향상 등 최적 조합 도출.", period: "2024.02", categoryColor: "bg-blue-600" },
+            { group: "ACADEMIC", type: "학력 (학사)", title: "중앙대학교 (응용통계학과)", detail: "학점 3.76/4.5 (92.60%)", period: "2018.03 - 2022.02", categoryColor: "bg-indigo-500" },
+            
+            // Awards / Certifications
+            { group: "AWARD", type: "최우수상 (빅콘테스트)", title: "홍수 ZERO 부문", detail: "비연속 홍수사상 활용 TabNet/ML 스태킹 예측 모형 구축.", period: "2021.12", categoryColor: "bg-red-600" },
+            { group: "AWARD", type: "대상 (빅데이터 플랫폼 경진대회)", title: "자동차 Value Chain 대시보드", detail: "3D/생키 차트 시각화 기반 데이터 기반 의사결정 지원.", period: "2021.09", categoryColor: "bg-red-500" },
+            { group: "AWARD", type: "우수상 (KBO 예측)", title: "KBO 시즌 예측 모델", detail: "WLS, PCA 적용 승률/타율/방어율 예측 모델링.", period: "2020.12", categoryColor: "bg-red-400" },
+            { group: "CERTIFICATE", type: "자격증", title: "데이터분석준전문가 (ADSP)", detail: "한국데이터산업진흥원.", period: "2024.09", categoryColor: "bg-gray-600" },
+            { group: "CERTIFICATE", type: "어학", title: "Toeic Speaking: IH (140)", detail: "유효기간: 26.01.07.", period: "2024.01", categoryColor: "bg-gray-500" },
+
+            // Activities / Projects
+            { group: "ACTIVITY", type: "연구 과제", title: "화학물질 독성 예측 모델 개발", detail: "분자의 위상학적 정보 및 3D 구조 반영 모델 성능 검증 (환경부)", period: "2022년", categoryColor: "bg-green-600" },
+            { group: "ACTIVITY", type: "AI 연합 동아리 BOAZ", title: "시각화 부문 수료 및 동아리 대표", detail: "데이터 웹 매거진 5회 제작 및 엔지니어링 부문 신설.", period: "2020.07 - 2021.07", categoryColor: "bg-fuchsia-600" },
+            { group: "ACTIVITY", type: "인공지능 학회 Deep Daive", title: "NLP팀 (LLM 논문 리뷰)", detail: "최신 LLM 논문 리뷰 및 언어모델 발전 과정 컨퍼런스 발표.", period: "2022.04 - 2022.07", categoryColor: "bg-fuchsia-500" },
+            { group: "ACTIVITY", type: "교육 이수", title: "LG Aimers 6기", detail: "난임 예측 AI 온라인 해커톤 참가 (상위 19%).", period: "2025.01 - 2025.02", categoryColor: "bg-orange-600" },
+        ];
+
+
+        // --- 프로젝트 데이터 (Featured Project 1을 실제 논문 연구에서 LLM Mock으로 대체) ---
+        const projects = [
+            // FEATURED PROJECT 1 (새로운 LLM Mock Project) - 구조 변경 적용
+            {
+                id: 1, isFeatured: true,
+                title: "LLM 기반 도메인 특화 QA 시스템 개발 (Mock)",
+                category: "AI Development",
+                summary: "RAG 구조를 활용하여 기업 문서 기반 QA 시스템 PoC를 주도하고, 응답 정확도를 25% 향상시킨 LLM 프로젝트.",
+                techStack: ["LLaMA", "RAG", "LangChain", "AWS", "NLP"],
+                cardColor: "bg-blue-50", borderColor: "border-blue-300",
+                detail: {
+                    duration: "2025/08 ~ 2025/11", // New Field
+                    role: "팀장 및 RAG 아키텍처 설계 담당", // New Field
+                    problemRecognition: `기업 내부의 방대한 비정형 문서를 기반으로 빠르고 정확하게 질문에 답변하는 시스템이 필요했습니다. 기존 검색 시스템은 키워드 기반으로 정확도가 낮고 환각(Hallucination) 현상이 잦았습니다.`, // New Field
+                    approachProcess: `1. **RAG 아키텍처 설계:** LLaMA-7B 모델과 벡터 DB를 결합한 Retrieval-Augmented Generation (RAG) 파이프라인을 구축했습니다.\n2. **데이터 정제 및 구조화:** OCR 및 문서 구조 복원 기술을 통해 비정형 PDF 문서를 '조·항 단위'의 의미론적 청크로 분리하고 벡터화했습니다.\n3. **자동화:** AWS Lambda 및 S3를 활용하여 문서 업데이트 시 벡터 DB 자동 반영 파이프라인을 구현했습니다.`, // New Field
+                    technicalContribution: `**GGUF 기반 모델 경량화:** 서버 환경 제약을 고려하여 LLaMA 모델을 GGUF 포맷으로 변환하여 추론 속도를 2배 개선했습니다. **프롬프트 템플릿 최적화:** 도메인 특화 용어에 맞는 프롬프트 템플릿을 A/B 테스트를 통해 최적화하여 응답 일관성을 확보했습니다.`, // New Field
+                    outcome: ["QA 응답 정확도 **25%P 향상** 달성 (Mock)", "시스템 구축으로 연간 1천 시간의 수동 문서 검색 업무 자동화 (Mock).", "제한된 환경에서 최적화 및 경량화 전략을 통해 실무 적용성 확보."],
+                    repoLink: "https://github.com/HwangJae-won/llm-qa-system" 
+                }
+            },
+            // Featured Projects 2, 3, 4 (Mock data retained for layout - Replace these!)
+            {
+                id: 2, isFeatured: true,
+                title: "뉴스 기사 기반 주가 변동 예측 모델 (Mock)",
+                category: "Data Science",
+                summary: "BERT 기반 감성 분석과 시계열 분석을 결합하여 다음 날 주가 변동 방향을 70% 확률로 예측하는 모델 개발 (실제 프로젝트로 대체 필요).",
+                techStack: ["BERT", "TensorFlow", "Pandas", "Time Series"],
+                cardColor: "bg-sky-50", borderColor: "border-sky-300",
+                detail: {
+                    duration: "2023/03 ~ 2023/09", 
+                    role: "데이터 분석 및 모델링 담당", 
+                    problemRecognition: `기존의 기술적 분석은 시장 심리를 반영하지 못해 예측 정확도가 낮았습니다. 비정형 데이터인 뉴스 기사를 정량화하여 예측 정확도를 높이는 모델 개발이 필요했습니다.`,
+                    approachProcess: `1. **감성 분석 모델 Fine-tuning:** 한국어 BERT 모델을 금융 텍스트 데이터셋으로 재훈련시켜 90% 이상의 감성 분류 정확도 확보.\n2. **데이터 통합:** 감성 점수와 주가 시계열 데이터를 통합하여 새로운 Feature Set을 구성.\n3. **예측 모델 통합:** LSTM 기반의 시계열 예측 모델에 감성 점수를 독립 변수로 통합하여 최종 예측 성능 검증.`,
+                    technicalContribution: `**금융 특화 BERT Fine-tuning:** 일반적인 BERT 모델 대신 금융 도메인 특성에 맞게 모델을 재훈련하여 감성 분석의 정확도를 크게 개선했습니다. **하이브리드 모델링:** 비정형(감성) 데이터와 정형(주가) 시계열 데이터를 결합한 하이브리드 모델링 방식을 구축했습니다.`, 
+                    outcome: ["주가 변동 방향 예측 정확도 70.2% 달성 (Baseline 대비 10%P 향상)", "모델의 예측 결과를 시각화 대시보드(Plotly)로 제공하여 사용 편의성 확보"],
+                    repoLink: "https://github.com/HwangJae-won/stock-prediction-nlp"
+                }
+            },
+            {
+                id: 3, isFeatured: true,
+                title: "사용자 세션 데이터 기반 이탈 예측 모델 (Mock)",
+                category: "Data Science",
+                summary: "LightGBM을 사용하여 사용자 행동 데이터를 분석하고, 7일 내 이탈 가능성을 85% AUC로 예측하여 리텐션 마케팅 캠페인의 효율을 30% 향상 (실제 프로젝트로 대체 필요).",
+                techStack: ["LightGBM", "Scikit-learn", "SQL", "Feature Engineering"],
+                cardColor: "bg-sky-50", borderColor: "border-sky-300", 
+                detail: {
+                    duration: "2023/01 ~ 2023/06", 
+                    role: "데이터 분석 및 Feature Engineering 리드", 
+                    problemRecognition: `기존 사용자의 이탈을 방지하는 것이 최우선 과제였으나, 사전에 이탈 가능성이 높은 사용자를 정확하게 예측할 수 있는 시스템이 없었습니다.`,
+                    approachProcess: `1. **Feature Engineering:** 사용자 로그인 횟수, 평균 세션 시간, 특정 기능 사용 여부 등 50여 개의 행동 기반 특성(Feature)을 SQL 쿼리로 추출.\n2. **모델 학습 및 튜닝:** Gradient Boosting 계열의 LightGBM을 선택하고 Hyperparameter Optimization을 통해 최적 모델 도출.\n3. **Feature Importance 분석:** 이탈에 가장 큰 영향을 미치는 요인(예: 특정 기능 미사용)을 분석하여 제품팀에 개선 인사이트 제공.`,
+                    technicalContribution: `**고차원 Feature Engineering 자동화:** 이탈에 영향을 미치는 다수의 파생 변수를 SQL 기반으로 자동 추출하고, LightGBM의 트리 구조를 활용하여 중요 Feature를 성공적으로 선별했습니다.`, 
+                    outcome: ["이탈 예측 모델 AUC 0.85 달성", "고위험군 사용자에게 선별적으로 쿠폰을 지급하는 리텐션 캠페인 효율 30% 증가"],
+                    repoLink: "https://github.com/HwangJae-won/churn-prediction"
+                }
+            },
+            {
+                id: 4, isFeatured: true,
+                title: "GAN 기반 의료 영상 데이터 증강 솔루션 (Mock)",
+                category: "AI Development",
+                summary: "조건부 GAN(cGAN)을 활용하여 희귀 질병 의료 영상을 합성 및 증강했습니다. 이를 통해 모델 훈련 데이터셋 부족 문제를 해결하고 F1-Score를 10% 향상 (실제 프로젝트로 대체 필요).",
+                techStack: ["cGAN", "PyTorch", "CUDA", "WandB", "Vision"],
+                cardColor: "bg-blue-50", borderColor: "border-blue-300",
+                detail: {
+                    duration: "2024/01 ~ 2024/05", 
+                    role: "모델 아키텍처 설계 및 구현", 
+                    problemRecognition: `희귀 질병 의료 영상 데이터 부족으로 인해 분류 모델의 일반화 성능이 낮고 과적합 문제가 심각했습니다.`,
+                    approachProcess: `1. **cGAN 아키텍처 구현:** 질병 유형(Condition)을 제어할 수 있는 Conditional GAN 모델을 PyTorch로 구현.\n2. **합성 데이터 생성:** 실제 데이터와 유사성이 높은 고해상도 합성 이미지를 생성하고 전문의 검토를 통해 유효성 확보.\n3. **효과 검증:** 합성 데이터가 추가된 데이터셋으로 분류 모델을 훈련시켜 성능을 비교 분석.`,
+                    technicalContribution: `**조건부 제어 구현:** GAN 훈련 시 질병 레이블을 조건으로 부여하여 원하는 유형의 영상을 정확하게 생성하도록 제어했습니다. **WandB 트래킹:** GAN 훈련 과정의 불안정성을 WandB를 통해 체계적으로 트래킹하고 하이퍼파라미터 튜닝을 진행했습니다.`, 
+                    outcome: ["기존 분류 모델의 F1-Score **10.5%P 향상** 달성 (0.75 -> 0.83)", "데이터셋 부족 문제 해소 및 새로운 AI 모델 개발 기반 마련"],
+                    repoLink: "https://github.com/HwangJae-won/medical-image-cgan"
+                }
+            },
+            // All Projects 5-8 (Mock data retained for layout - Replace these!)
+            {
+                id: 5, isFeatured: false,
+                title: "RNN을 이용한 문맥 기반 챗봇 시스템 (Mock)",
+                category: "AI Development",
+                summary: "seq2seq 모델 기반으로 복잡한 문맥을 이해하고 답변하는 챗봇을 개발했습니다. 고객 문의 응대율 60%를 자동화했습니다.",
+                techStack: ["RNN", "Seq2Seq", "TensorFlow", "NLP", "Python"],
+                cardColor: "bg-blue-50", borderColor: "border-blue-300",
+                detail: {
+                    duration: "2022/07 ~ 2022/10", role: "모델 개발 및 배포", problemRecognition: `단순 룰베이스 챗봇의 낮은 고객 만족도를 개선하고, 문맥을 이해하는 AI 챗봇 개발이 필요했습니다.`, approachProcess: `대화 로그 20만 건을 전처리하고, 어텐션 메커니즘이 적용된 RNN(LSTM) 모델을 학습했습니다. Flask로 API를 구성하여 실 서비스에 통합했습니다.`, technicalContribution: `Attention-based Seq2Seq 모델을 직접 구현하여 긴 문맥의 대화에서도 높은 응답 정확도를 보였습니다.`, outcome: ["고객 문의 응대 자동화율 60% 달성", "고객 만족도 15% 향상"], repoLink: "https://github.com/HwangJae-won/rnn-chatbot"
+                }
+            },
+            {
+                id: 6, isFeatured: false,
+                title: "비정형 데이터 기반 잠재 고객 분류 및 타겟팅 (Mock)",
+                category: "Data Science",
+                summary: "고객 리뷰와 SNS 데이터를 LDA(Latent Dirichlet Allocation)로 분석하여 5가지 잠재 고객 세그먼트를 정의하고 타겟 마케팅 캠페인 효율을 높였습니다.",
+                techStack: ["LDA", "NLTK", "Python", "Clustering", "Gensim"],
+                cardColor: "bg-sky-50", borderColor: "border-sky-300", 
+                detail: {
+                    duration: "2022/01 ~ 2022/04", role: "데이터 수집 및 세그먼트 분석", problemRecognition: `기존 마케팅 타겟팅이 인구통계학적 정보에 국한되어 효율이 낮았습니다. 고객의 '심리적 니즈'를 파악하는 새로운 분류 기준이 필요했습니다.`, approachProcess: `리뷰 및 SNS 텍스트 데이터를 수집, 정제하고 LDA를 활용하여 텍스트 데이터 내의 주제를 추출, 5가지 잠재 세그먼트로 분류했습니다.`, technicalContribution: `토픽 모델링(LDA) 결과를 기반으로 고객 세그먼트를 정의하고, 이를 통해 타겟 마케팅의 CTR을 25% 개선하는 데 기여했습니다.`, outcome: ["잠재 고객 5가지 세그먼트 정의 및 타겟팅 정확도 25% 향상"], repoLink: "https://github.com/HwangJae-won/customer-segmentation-nlp"
+                }
+            },
+            {
+                id: 7, isFeatured: false,
+                title: "시계열 데이터를 활용한 서버 부하 예측 (Mock)",
+                category: "AI Development",
+                summary: "서버 CPU/메모리 사용량 시계열 데이터를 Prophet 모델로 분석하여 3시간 후의 부하를 예측하고, 이를 기반으로 클라우드 자원 자동 스케일링을 구현했습니다.",
+                techStack: ["Prophet", "Python", "Time Series", "Cloud", "Monitoring"],
+                cardColor: "bg-blue-50", borderColor: "border-blue-300",
+                detail: {
+                    duration: "2022/11 ~ 2023/02", role: "시계열 모델링 및 자동화 연동", problemRecognition: `예측 불가능한 서버 부하 변동으로 자원 낭비 및 서비스 장애가 발생했습니다. 효율적인 자원 관리를 위한 정확한 부하 예측 시스템이 필요했습니다.`, approachProcess: `Prophet 라이브러리를 사용하여 시계열 데이터의 트렌드, 계절성, 이벤트 요소를 분리하여 분석했습니다. 예측 결과를 클라우드 자원 관리 시스템(AWS Auto Scaling)과 연동했습니다.`, technicalContribution: `Prophet 모델을 활용하여 복잡한 시계열 패턴을 효과적으로 분해 및 예측했으며, 예측 결과를 기반으로 클라우드 자원 자동 스케일링을 구현했습니다.`, outcome: ["서버 부하 예측 정확도 MAPE 5% 미만 달성", "클라우드 인프라 운영 비용 10% 절감"], repoLink: "https://github.com/HwangJae-won/server-load-prediction"
+                }
+            },
+            {
+                id: 8, isFeatured: false,
+                title: "E-commerce 매출 증대를 위한 A/B 테스트 분석 (Mock)",
+                category: "Data Science",
+                summary: "사이트 UI 변경에 따른 A/B 테스트 데이터를 통계적으로 분석하여 유의미한 매출 증대(p-value < 0.05)를 검증하고, 최적의 UI를 확정했습니다.",
+                techStack: ["Statistics", "Python", "Pandas", "Hypothesis Testing", "Matplotlib"],
+                cardColor: "bg-sky-50", borderColor: "border-sky-300", // Sky Blue로 변경
+                detail: {
+                    duration: "2021/09 ~ 2021/11", role: "가설 설정 및 통계 검증 주도", problemRecognition: `신규 UI 배포 후 매출 변동이 있었으나, 이것이 우연인지 실제 효과인지 판단할 명확한 통계적 기준이 없었습니다.`, approachProcess: `1. **데이터 수집:** A/B 테스트 기간 동안의 사용자 유입, 전환율, 매출 데이터를 수집.\n2. **가설 검정:** T-test, 카이제곱 검정 등을 활용하여 통계적 유의성을 확인.\n3. **인사이트 도출:** 전환율에 기여하는 주요 행동 변화를 분석하여 다음 디자인 개선 방향 제시.`, technicalContribution: `**통계적 유의성 검증 파이프라인 구축:** A/B 테스트 데이터 분석을 위한 T-test 및 카이제곱 검정 자동화 스크립트를 작성하여 분석의 신뢰도를 높였습니다.`, outcome: ["신규 UI의 매출 증대 효과 통계적 유의성(p < 0.05) 검증", "매출 증대 효과 7% 기여"], repoLink: "https://github.com/HwangJae-won/ab-test-analysis"
+                }
+            }
+        ];
+
+        // --- RENDER FUNCTIONS ---
+        
+        // 학력 및 활동 데이터를 그룹별로 분류하는 헬퍼 함수
+        function groupEducationData(data) {
+            const groups = {
+                ACADEMIC: [],
+                AWARD: [],
+                ACTIVITY: [],
+                CERTIFICATE: []
+            };
+            data.forEach(item => {
+                if (groups[item.group]) {
+                    groups[item.group].push(item);
+                }
+            });
+            return groups;
+        }
+
+        function renderProfile() {
+            document.getElementById('profile-name').textContent = profile.name;
+            document.getElementById('profile-bio').textContent = profile.bio;
+
+            const linksContainer = document.getElementById('contact-links');
+            linksContainer.innerHTML = `
+                <a href="${profile.github}" target="_blank" class="text-gray-700 hover:text-indigo-600 transition" aria-label="GitHub">
+                    <svg class="w-7 h-7 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.803 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.087-.744.084-.69.084-.69 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.493.998.108-.776.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.292-1.552 3.3-.404 3.3-.404.652 1.652.241 2.873.118 3.176.776.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.6.8.576C20.56 21.827 24 17.32 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="${profile.linkedin}" target="_blank" class="text-gray-700 hover:text-indigo-600 transition" aria-label="LinkedIn">
+                    <svg class="w-7 h-7 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.529-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="mailto:${profile.email}" class="text-gray-700 hover:text-indigo-600 transition" aria-label="Email">
+                    <svg class="w-7 h-7 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+                </a>
+            `;
+        }
+
+        function createProjectCard(project) {
+            return `
+                <div class="card-hover transition duration-300 p-6 rounded-2xl shadow-md border ${project.cardColor} ${project.borderColor}">
+                    <span class="inline-block px-4 py-1 text-xs font-semibold rounded-full mb-4 
+                        ${project.category === 'AI Development' ? 'text-blue-700 bg-blue-200' : 'text-sky-700 bg-sky-200'}"> <!-- Data Science 색상 변경 적용 -->
+                        ${project.category}
+                    </span>
+                    <h3 class="text-2xl font-bold mb-3 text-gray-900">${project.title}</h3>
+                    <p class="text-gray-600 mb-5">${project.summary}</p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        ${project.techStack.map(tech => `
+                            <span class="px-3 py-1 text-xs font-medium text-gray-700 bg-white rounded-lg shadow-sm">
+                                ${tech}
+                            </span>
+                        `).join('')}
+                    </div>
+
+                    <!-- 프로젝트 상세 정보를 여는 버튼으로 변경 -->
+                    <button onclick="openModal(${project.id})" class="text-indigo-600 font-semibold hover:text-indigo-800 transition duration-300 flex items-center focus:outline-none">
+                        프로젝트 상세 보기 &rarr;
+                    </button>
+                </div>
+            `;
+        }
+
+        function renderProjects(filter = 'All') {
+            const container = document.getElementById('projects-container');
+            const noProjects = document.getElementById('no-projects');
+            const toggleBtn = document.getElementById('toggle-view-btn');
+            const subtitle = document.getElementById('project-subtitle');
+            container.innerHTML = '';
+            
+            // 1. Filter by Featured/All state
+            let baseProjects = isViewingAll 
+                ? projects
+                : projects.filter(p => p.isFeatured);
+
+            // 2. Filter by Category
+            const filteredProjects = filter === 'All' 
+                ? baseProjects
+                : baseProjects.filter(p => p.category === filter);
+
+            // 3. Render
+            if (filteredProjects.length === 0) {
+                noProjects.classList.remove('hidden');
+            } else {
+                noProjects.classList.add('hidden');
+                filteredProjects.forEach(project => {
+                    container.innerHTML += createProjectCard(project);
+                });
+            }
+
+            // 4. Update UI elements based on state
+            const totalProjectCount = projects.length;
+            const featuredCount = projects.filter(p => p.isFeatured).length;
+
+            if (isViewingAll) {
+                toggleBtn.textContent = `핵심 프로젝트만 보기 (${featuredCount}개)`;
+                subtitle.textContent = `보유한 모든 프로젝트 ${totalProjectCount}개를 확인하세요.`;
+                toggleBtn.classList.add('bg-gray-400', 'hover:bg-gray-500');
+                toggleBtn.classList.remove('bg-gray-800', 'hover:bg-gray-700');
+            } else {
+                toggleBtn.textContent = `전체 프로젝트 보기 (${totalProjectCount}개)`;
+                subtitle.textContent = `엄선된 핵심 프로젝트 (${featuredCount}개)를 보여드립니다.`;
+                toggleBtn.classList.remove('bg-gray-400', 'hover:bg-gray-500');
+                toggleBtn.classList.add('bg-gray-800', 'hover:bg-gray-700');
+            }
+            // Hide toggle button if the current view (All or Featured) is filtered by category and only shows a subset.
+            // For simplicity, we only show/hide the button if filter is 'All'
+            document.getElementById('project-toggle').classList.toggle('hidden', filter !== 'All');
+
+
+            // Update button styles
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active-filter', 'bg-indigo-600', 'text-white');
+                btn.classList.add('bg-gray-200', 'text-gray-700');
+                if (btn.getAttribute('data-filter') === filter) {
+                    btn.classList.add('active-filter', 'bg-indigo-600', 'text-white');
+                    btn.classList.remove('bg-gray-200', 'text-gray-700');
+                }
+            });
+        }
+        
+        function toggleProjectView() {
+            isViewingAll = !isViewingAll;
+            // Get current active filter and re-render
+            const currentFilter = document.querySelector('.active-filter').getAttribute('data-filter');
+            renderProjects(currentFilter);
+            
+            // Scroll to project section after toggle
+            document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // --- 경력 기술서 렌더링 ---
+        function renderExperience() {
+            const container = document.getElementById('experience-container');
+            container.innerHTML = career.map(job => {
+                return `
+                    <div class="timeline-item">
+                        <div class="p-5 rounded-xl shadow-lg bg-white border border-gray-100 card-hover">
+                            <p class="text-sm font-medium text-indigo-600 mb-1">${job.period}</p>
+                            <h3 class="text-xl font-bold text-gray-900">${job.title}</h3>
+                            <p class="text-lg text-gray-700 mb-3">${job.company}</p>
+                            <p class="text-gray-600 mb-3">${job.summary}</p>
+                            
+                            <h4 class="text-base font-semibold text-gray-800 mt-4 mb-2">주요 성과 및 역할:</h4>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1 pl-4">
+                                ${job.achievements.map(ach => `<li>${ach}</li>`).join('')}
+                            </ul>
+
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                ${job.techStack.map(tech => `
+                                    <span class="px-3 py-1 text-xs font-medium text-white bg-gray-600 rounded-full shadow-sm">
+                                        ${tech}
+                                    </span>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // --- 학력/활동 렌더링 ---
+        function createEducationItem(item) {
+            return `
+                <div class="p-5 rounded-xl shadow-lg bg-white border border-gray-100 h-full">
+                    <span class="inline-block px-4 py-1 text-xs font-semibold rounded-full mb-3 text-white ${item.categoryColor}">
+                        ${item.type}
+                    </span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1">${item.title}</h3>
+                    <p class="text-gray-600 mb-2 text-sm">${item.detail}</p>
+                    <p class="text-xs text-gray-500">${item.period}</p>
+                </div>
+            `;
+        }
+
+        function renderEducation() {
+            const groups = groupEducationData(education);
+
+            // 1. Render Academic
+            const academicContainer = document.getElementById('academic-container');
+            academicContainer.innerHTML = groups.ACADEMIC.map(createEducationItem).join('');
+
+            // 2. Render Awards & Certificates
+            const awardsContainer = document.getElementById('awards-container');
+            // Combine AWARD and CERTIFICATE groups
+            const awardsAndCerts = [...groups.AWARD, ...groups.CERTIFICATE];
+            awardsContainer.innerHTML = awardsAndCerts.map(createEducationItem).join('');
+            
+            // 3. Render Activities
+            const activitiesContainer = document.getElementById('activities-container');
+            activitiesContainer.innerHTML = groups.ACTIVITY.map(createEducationItem).join('');
+        }
+
+        // --- MODAL LOGIC (프로젝트 상세 구조 반영) ---
+        function findProjectById(id) {
+            return projects.find(p => p.id === id);
+        }
+
+        function openModal(projectId) {
+            const project = findProjectById(projectId);
+            if (!project) return;
+
+            const modal = document.getElementById('project-modal');
+            const modalContent = modal.querySelector('.modal-content-transition');
+            const modalBody = document.getElementById('modal-body-content');
+
+            // 1. Populate Content
+            modalBody.innerHTML = `
+                <header class="pb-4 border-b border-gray-100">
+                    <span class="inline-block px-4 py-1 text-sm font-semibold rounded-full mb-2 
+                        ${project.category === 'AI Development' ? 'text-blue-700 bg-blue-100' : 'text-sky-700 bg-sky-100'}">
+                        ${project.category}
+                    </span>
+                    <h3 class="text-4xl font-bold text-gray-900">${project.title}</h3>
+                    <p class="text-xl text-gray-500 mt-2">${project.summary}</p>
+
+                    <!-- 기간 및 역할 -->
+                    <div class="mt-4 flex flex-wrap gap-y-2 gap-x-8 text-sm text-gray-600 font-medium">
+                        <div class="flex items-center space-x-2">
+                            <span class="font-bold text-indigo-600">기간:</span> <span>${project.detail.duration || '미기재'}</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="font-bold text-indigo-600">역할:</span> <span>${project.detail.role || '미기재'}</span>
+                        </div>
+                    </div>
+                </header>
+
+                <section>
+                    <h4 class="text-2xl font-bold mb-3 text-indigo-700">1. 문제 인식 및 목표 (Problem Recognition)</h4>
+                    <p class="text-gray-700 whitespace-pre-wrap leading-relaxed">${project.detail.problemRecognition}</p>
+                </section>
+                
+                <section>
+                    <h4 class="text-2xl font-bold mb-3 text-indigo-700">2. 접근 방식 및 개발 단계 (Approach & Process)</h4>
+                    <p class="text-gray-700 whitespace-pre-wrap leading-relaxed">${project.detail.approachProcess}</p>
+                </section>
+
+                <section>
+                    <h4 class="text-2xl font-bold mb-3 text-indigo-700">3. 핵심 기여 및 기술적 해결 (Technical Contribution)</h4>
+                    <p class="text-gray-700 whitespace-pre-wrap leading-relaxed">${project.detail.technicalContribution}</p>
+                    <div class="mt-4 p-4 bg-gray-100 rounded-xl text-sm text-gray-600 border border-gray-200">
+                        <!-- 이미지, 코드 스니펫 등 시각 자료 첨부 영역 -->
+                        [여기에 프로젝트 결과 이미지 또는 핵심 코드 스니펫을 첨부하여 기여도를 시각적으로 보여줄 수 있습니다.]
+                    </div>
+                </section>
+                
+                <section>
+                    <h4 class="text-2xl font-bold mb-3 text-indigo-700">4. 최종 결과 및 성과 (Outcome & Impact)</h4>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2 pl-4">
+                        ${project.detail.outcome.map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+                    ${project.detail.repoLink ? `
+                        <div class="mt-6">
+                            <a href="${project.detail.repoLink}" target="_blank" class="inline-flex items-center px-4 py-2 bg-gray-800 text-white font-medium rounded-lg shadow-md hover:bg-gray-700 transition duration-300">
+                                GitHub Repository &nbsp; 
+                                <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4m-4-7h4m0 0v4m-4-4l5 5"></path></svg>
+                            </a>
+                        </div>
+                    ` : ''}
+                </section>
+
+                <section>
+                    <h4 class="text-2xl font-bold mb-3 text-indigo-700">핵심 기술 스택</h4>
+                    <div class="flex flex-wrap gap-2">
+                        ${project.techStack.map(tech => `
+                            <span class="px-3 py-1 text-sm font-medium text-white bg-indigo-500 rounded-full shadow-sm">
+                                ${tech}
+                            </span>
+                        `).join('')}
+                    </div>
+                </section>
+            `;
+
+            // 2. Show Modal with smooth transition
+            modal.classList.remove('hidden', 'opacity-0');
+            modal.classList.add('flex');
+            
+            // Force reflow and apply transition classes
+            void modal.offsetWidth; 
+            modalContent.classList.remove('scale-95', 'opacity-0');
+
+            document.body.classList.add('no-scroll'); // Prevent scrolling background
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('project-modal');
+            const modalContent = modal.querySelector('.modal-content-transition');
+
+            // Hide Modal with smooth transition
+            modalContent.classList.add('scale-95', 'opacity-0');
+            modal.classList.add('opacity-0');
+            
+            setTimeout(() => {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+                document.body.classList.remove('no-scroll'); // Restore scrolling
+            }, 300); // Match transition duration
+        }
+
+        // Close modal when clicking the backdrop
+        window.addEventListener('click', (event) => {
+            const modal = document.getElementById('project-modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // --- INITIALIZATION AND EVENT LISTENERS ---
+
+        window.onload = function() {
+            // Render all dynamic sections
+            renderProfile();
+            renderProjects('All'); // Show all projects by default (only featured ones are rendered if isViewingAll is false)
+            renderExperience(); 
+            renderEducation(); 
+            // renderSkills() 제거됨
+
+            // Setup filter button listeners
+            document.querySelectorAll('.filter-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    renderProjects(filter);
+                });
+            });
+        };
+    </script>
+</body>
+</html>
