@@ -12,19 +12,20 @@
             background-color: #f8fafc; /* Slate-50 */
         }
         .text-gradient {
-            /* 블루 톤이 가미된 깔끔한 개발자 포트폴리오 느낌 */
-            background-image: linear-gradient(to right, #0ea5e9, #6366f1); /* Sky-500 to Indigo-500 */
+            /* 트렌디한 깊은 파랑 -> 인디고 그라데이션 */
+            background-image: linear-gradient(to right, #00C9FF, #4F46E5); /* Lighter Blue to Deep Indigo */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         /* Apple-like subtle shadow and hover effect */
         .card-hover {
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
         .card-hover:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             border-color: #6366f1; /* Indigo-500 border highlight on hover */
         }
         /* Hide scrollbar for body when modal is open */
@@ -108,14 +109,19 @@
                 <span class="text-gradient">AI Developer</span> & <span class="text-gradient">Data Scientist</span>
             </h1>
             <h2 id="profile-name" class="text-3xl font-semibold text-gray-700 mb-6"></h2>
-            <p id="profile-bio" class="text-xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed"></p>
+            <p id="profile-bio" class="text-xl text-gray-600 max-w-4xl mx-auto mb-8 leading-relaxed"></p>
             
+            <!-- PDF Download Button (Added and styled for prominence) -->
+            <a id="resume-download-btn" href="https://example.com/resume.pdf" target="_blank" class="inline-block px-10 py-3 mb-12 rounded-full font-bold text-white bg-indigo-600 hover:bg-indigo-700 transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02]">
+                PDF로 핵심만 보기! 
+            </a>
+
             <div id="contact-links" class="flex justify-center space-x-8 text-xl">
                 <!-- Links will be injected here --></div>
         </section>
 
         <!-- 2. Projects Section --><section id="projects" class="py-20 border-t border-gray-100"> 
-            <h2 class="text-5xl font-extrabold text-center text-gray-900 mb-4 section-title-accent">핵심 포트폴리오 프로젝트</h2>
+            <h2 class="text-5xl font-extrabold text-center text-gray-900 mb-4 section-title-accent">📜 Project</h2>
             <p id="project-subtitle" class="text-center text-xl text-gray-600 mb-12">
                 엄선된 핵심 프로젝트를 보여드립니다.
             </p>
@@ -154,15 +160,15 @@
         </section>
 
         <!-- 4. Academic Section (학력 및 논문 연구) --><section id="academic" class="py-20 border-t border-gray-100">
-            <h2 class="text-5xl font-extrabold text-center text-gray-900 mb-4 section-title-accent">학력 및 논문 연구</h2>
-            <p class="text-center text-xl text-gray-600 mb-12">GNN/LLM 연구를 포함한 학위 과정의 깊이를 보여줍니다.</p>
+            <h2 class="text-5xl font-extrabold text-center text-gray-900 mb-4 section-title-accent">🎓 Education & Paper</h2>
+            <p class="text-center text-xl text-gray-600 mb-12">연구 한줄 요약</p>
             <!-- **Timeline Style Applied Here** -->
             <div id="academic-container" class="max-w-3xl mx-auto timeline">
                 <!-- Academic items will be injected here --></div>
         </section>
 
         <!-- 5. Awards/Certificates Section (수상 및 자격증) --><section id="awards" class="py-20 border-t border-gray-100">
-            <h2 class="text-5xl font-extrabold text-center text-gray-900 mb-4 section-title-accent">수상 및 자격증</h2>
+            <h2 class="text-5xl font-extrabold text-center text-gray-900 mb-4 section-title-accent">🎖️ Awards & Certificates</h2>
             <p class="text-center text-xl text-gray-600 mb-12">데이터 분석 역량을 증명하는 경진대회 성과와 전문 자격입니다.</p>
             <div id="awards-container" class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
                 <!-- Award/Certificate items will be injected here --></div>
@@ -205,7 +211,7 @@
             name: "황재원 (Jaewon Hwang)",
             title: "AI Developer & Data Scientist",
             bio: "GNN, LLM 기반의 AI 솔루션 개발 및 통계적 문제 해결 역량을 보유하고 있습니다. 도메인 데이터 구조화, 노이즈 처리, 모델 최적화에 강점을 가진 전문가입니다.",
-            email: "emperorone0527@gmail.com", // <-- 수정된 이메일 주소
+            email: "emperorone0527@gmail.com", 
             github: "https://github.com/HwangJae-won", 
             linkedin: "https://linkedin.com/in/jaewon-hwang-profile",
             resumeUrl: "https://example.com/resume.pdf", 
@@ -243,8 +249,14 @@
         ];
         
         const education = [
-            { group: "ACADEMIC", type: "학력 (석사)", title: "중앙대학교 대학원 (통계학과)", detail: "GNN, LLM 연구 (AI STAT LAB) / 학점 3.75/4.5 (92.50%)", period: "2022.03 - 2024.02", categoryColor: "bg-indigo-600" },
-            { group: "ACADEMIC", type: "논문 (석사 학위)", title: "다중 레이블 독성 예측 연구", detail: "GROVER+MLSMOTE+CatBoost 조합에서 Recall 2.5배 향상 등 최적 조합 도출.", period: "2024.02", categoryColor: "bg-sky-600" }, /* Sky Blue */
+            { 
+                group: "ACADEMIC", 
+                type: "학력 (석사)", 
+                title: "중앙대학교 대학원 (통계학과)", 
+                detail: "GNN, LLM 연구 (AI STAT LAB) / 학점 3.75/4.5 (92.50%). 논문: 다중 레이블 독성 예측 연구 (Recall 2.5배 향상 등 최적 조합 도출).", 
+                period: "2022.03 - 2024.02", 
+                categoryColor: "bg-indigo-600" 
+            },
             { group: "ACADEMIC", type: "학력 (학사)", title: "중앙대학교 (응용통계학과)", detail: "학점 3.76/4.5 (92.60%)", period: "2018.03 - 2022.02", categoryColor: "bg-indigo-500" },
             
             { group: "AWARD", type: "최우수상 (빅콘테스트)", title: "홍수 ZERO 부문", detail: "비연속 홍수사상 활용 TabNet/ML 스태킹 예측 모형 구축.", period: "2021.12", categoryColor: "bg-blue-600" }, /* Blue */
@@ -396,6 +408,9 @@
         function renderProfile() {
             document.getElementById('profile-name').textContent = profile.name;
             document.getElementById('profile-bio').textContent = profile.bio;
+            
+            // PDF Download Button URL setting
+            document.getElementById('resume-download-btn').href = profile.resumeUrl;
 
             const linksContainer = document.getElementById('contact-links');
             linksContainer.innerHTML = `
@@ -560,7 +575,7 @@
                         <div class="p-5 rounded-xl shadow-lg bg-white border border-gray-100 card-hover">
                             <p class="text-sm font-medium text-indigo-600 mb-1">${item.period}</p>
                             <h3 class="text-xl font-bold text-gray-900">${item.title}</h3>
-                            <p class="text-gray-600 mb-2">${item.detail}</p>
+                            <p class="text-gray-600 mb-2 whitespace-pre-wrap">${item.detail}</p>
                             <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full mt-2 text-white ${item.categoryColor}">
                                 ${item.type}
                             </span>
